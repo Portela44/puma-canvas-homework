@@ -49,7 +49,7 @@ table {
 
 #shapes {
     background-color: lightyellow;
-    background-image: url("background.png");
+    background-image: url("img/background.png");
     background-size: 1000px;
     background-repeat:no-repeat;
 }

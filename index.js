@@ -4,6 +4,21 @@ console.log(ctx);
 
 ctx.clearRect(0, 0, 1000, 600);
 
+const laprasImg = new Image();
+laprasImg.src = "img/lapras.png";
+
+const ashImg = new Image();
+ashImg.src = "img/ash.png";
+
+const lugiaImg = new Image();
+lugiaImg.src = "img/lugia.png";
+
+const mistyImg = new Image();
+mistyImg.src = "img/misty.png";
+
+const diglettImg = new Image();
+diglettImg.src = "img/diglett.png";
+
 const ash = {
     x:700,
     y:300,
@@ -32,26 +47,22 @@ const misty = {
     height:250,
 }
 
-const laprasImg = new Image();
-laprasImg.src = "lapras.png";
-
-
-const ashImg = new Image();
-ashImg.src = "ash.png";
-
-
-const lugiaImg = new Image();
-lugiaImg.src = "lugia.png";
-
-
-const mistyImg = new Image();
-mistyImg.src = "misty.png";
-
-
 const digletts = [
     {
         x:20,
         y:435,
+        width:100,
+        height:100,
+    },
+    {
+        x:350,
+        y:455,
+        width:100,
+        height:100,
+    },
+    {
+        x:650,
+        y:480,
         width:100,
         height:100,
     },
@@ -67,23 +78,7 @@ const digletts = [
         width:100,
         height:100,
     },
-    {
-        x:350,
-        y:455,
-        width:100,
-        height:100,
-    },
-    {
-        x:650,
-        y:480,
-        width:100,
-        height:100,
-    }
 ]
-
-const diglettImg = new Image();
-diglettImg.src = "diglett.png";
-
 
 function swimmingLapras() {
     ctx.clearRect(0, 0, 1000, 600);
@@ -113,12 +108,12 @@ function flyingLugia() {
     if (lugia.x > 1000) {
         lugia.x = -1000;
     }
-    ctx.drawImage(lugiaImg, lugia.x, lugia.y, lugia.width, lugia.height);
-
+    
+    //drawing images
+    ctx.drawImage(laprasImg, lapras.x, lapras.y, lapras.width, lapras.height);
     digletts.forEach(pkmn => {
         ctx.drawImage(diglettImg, pkmn.x, pkmn.y, pkmn.width, pkmn.height);
-    })
-    ctx.drawImage(laprasImg, lapras.x, lapras.y, lapras.width, lapras.height);
+    });
     ctx.drawImage(ashImg, ash.x, ash.y, ash.width, ash.height);
     ctx.drawImage(mistyImg, misty.x, misty.y, misty.width, misty.height);
     ctx.drawImage(lugiaImg, lugia.x, lugia.y, lugia.width, lugia.height);
@@ -130,9 +125,25 @@ setTimeout(function () {
 
 function randomDiglett() {
     ctx.clearRect(0, 0, 1000, 600);
+    ctx.drawImage(laprasImg, lapras.x, lapras.y, lapras.width, lapras.height);
     let plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+    let randomMovement = Math.floor(Math.random()*8);
+    let movingDiglett = Math.floor(Math.random()*5);
+    digletts[movingDiglett].x += randomMovement*plusOrMinus;
+
     
+    digletts.forEach(pkmn => {
+        ctx.drawImage(diglettImg, pkmn.x, pkmn.y, pkmn.width, pkmn.height);
+    });
+    ctx.drawImage(ashImg, ash.x, ash.y, ash.width, ash.height);
+    ctx.drawImage(mistyImg, misty.x, misty.y, misty.width, misty.height);
+    ctx.drawImage(lugiaImg, lugia.x, lugia.y, lugia.width, lugia.height);
 }
+
+setTimeout(function () {
+    let randomInterval = Math.random()*700;
+    let interval = setInterval(randomDiglett, randomInterval)
+}, 0);
 
 
 
