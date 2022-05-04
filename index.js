@@ -87,11 +87,12 @@ function swimmingLapras() {
     if (lapras.x < -260) {
         lapras.x = 950;
     }
+    
+    //drawing images
     ctx.drawImage(laprasImg, lapras.x, lapras.y, lapras.width, lapras.height);
     digletts.forEach(pkmn => {
         ctx.drawImage(diglettImg, pkmn.x, pkmn.y, pkmn.width, pkmn.height);
     })
-       
     ctx.drawImage(ashImg, ash.x, ash.y, ash.width, ash.height);
     ctx.drawImage(mistyImg, misty.x, misty.y, misty.width, misty.height);
     ctx.drawImage(lugiaImg, lugia.x, lugia.y, lugia.width, lugia.height);
@@ -125,13 +126,14 @@ setTimeout(function () {
 
 function randomDiglett() {
     ctx.clearRect(0, 0, 1000, 600);
-    ctx.drawImage(laprasImg, lapras.x, lapras.y, lapras.width, lapras.height);
+    
     let plusOrMinus = Math.random() < 0.5 ? -1 : 1;
     let randomMovement = Math.floor(Math.random()*8);
     let movingDiglett = Math.floor(Math.random()*5);
     digletts[movingDiglett].x += randomMovement*plusOrMinus;
 
-    
+    //drawing images
+    ctx.drawImage(laprasImg, lapras.x, lapras.y, lapras.width, lapras.height);
     digletts.forEach(pkmn => {
         ctx.drawImage(diglettImg, pkmn.x, pkmn.y, pkmn.width, pkmn.height);
     });
